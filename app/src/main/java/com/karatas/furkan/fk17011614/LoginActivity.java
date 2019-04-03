@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameET, passwordET;
@@ -30,17 +32,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (usernameET.getText().toString().equals("admin") &&
                         passwordET.getText().toString().equals("password")) {
+
                     Intent intent = new Intent(getApplicationContext(), UserInputsActivity.class);
                     startActivity(intent);
+
                 } else {
-                    usernameET.setText("");
-                    passwordET.setText("");
-                    usernameET.setBackground(getResources().getDrawable
-                            (R.drawable.et_rounded_light_red_background)
-                    );
-                    passwordET.setBackground(getResources().getDrawable
-                            (R.drawable.et_rounded_light_red_background)
-                    );
+                    emptyInputs(new EditText[]{usernameET, passwordET});
+                    warnForInputs(new EditText[]{usernameET, passwordET});
                     alertTV.setVisibility(View.VISIBLE);
                 }
             }
@@ -50,8 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence,
                                       int i, int i1, int i2) {
-                usernameET.setBackground(getResources().getDrawable
-                        (R.drawable.et_rounded_background));
+                clearWarningsForInputs(new EditText[]{usernameET, passwordET});
                 alertTV.setVisibility(View.INVISIBLE);
             }
             @Override
@@ -65,8 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence,
                                       int i, int i1, int i2) {
-                passwordET.setBackground(getResources().getDrawable
-                        (R.drawable.et_rounded_background));
+                clearWarningsForInputs(new EditText[]{usernameET, passwordET});
                 alertTV.setVisibility(View.INVISIBLE);
             }
             @Override
@@ -75,5 +71,27 @@ public class LoginActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence,
                                           int i, int i1, int i2) {}
         });
+    }
+
+    public void warnForInputs(EditText[] editTexts){
+        for (EditText editText : editTexts){
+            editText.setBackground(getResources().getDrawable
+                    (R.drawable.et_rounded_light_red_background)
+            );
+        }
+    }
+
+    public void clearWarningsForInputs(EditText[] editTexts){
+        for (EditText editText : editTexts){
+            editText.setBackground(getResources().getDrawable
+                    (R.drawable.et_rounded_background)
+            );
+        }
+    }
+
+    public void emptyInputs(EditText[] editTexts){
+        for (EditText editText : editTexts){
+            editText.setText("");
+        }
     }
 }
