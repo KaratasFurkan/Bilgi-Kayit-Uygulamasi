@@ -103,6 +103,8 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 inputs.empty();
+                profilePicture.setImageBitmap(BitmapFactory.decodeResource(getResources(),
+                        R.drawable.profile_picture_icon));
             }
         });
 
@@ -266,7 +268,7 @@ public class FormActivity extends AppCompatActivity {
         return "";
     }
 
-    private void  requestMultiplePermissions(){
+    private void requestMultiplePermissions() {
         Dexter.withActivity(this)
                 .withPermissions(
                         Manifest.permission.CAMERA,
