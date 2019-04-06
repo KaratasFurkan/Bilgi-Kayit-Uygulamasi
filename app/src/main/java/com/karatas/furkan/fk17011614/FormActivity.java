@@ -103,8 +103,9 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 inputs.empty();
-                profilePicture.setImageBitmap(BitmapFactory.decodeResource(getResources(),
-                        R.drawable.profile_picture_icon));
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.profile_picture_icon);
+                profilePicture.setImageBitmap(bitmap);
             }
         });
 
