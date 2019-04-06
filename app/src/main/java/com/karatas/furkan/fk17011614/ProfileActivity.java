@@ -1,9 +1,11 @@
 package com.karatas.furkan.fk17011614;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -27,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         idNumberTV = findViewById(R.id.tv_id_number);
         phoneNumberTV = findViewById(R.id.tv_phone_number);
         emailAddressTV = findViewById(R.id.tv_email_address);
+        ImageView profilePicture = findViewById(R.id.iv_profile_picture);
 
         nameTV.setText(intent.getStringExtra("et_name"));
         surnameTV.setText(intent.getStringExtra("et_surname"));
@@ -37,6 +40,9 @@ public class ProfileActivity extends AppCompatActivity {
         idNumberTV.setText(intent.getStringExtra("et_id_number"));
         phoneNumberTV.setText(intent.getStringExtra("et_phone_number"));
         emailAddressTV.setText(intent.getStringExtra("et_email_address"));
+
+        byte[] byteArray = getIntent().getByteArrayExtra("IMAGE");
+        profilePicture.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length));
     }
 
     private int calculateAge(String dateOfBirth) {
