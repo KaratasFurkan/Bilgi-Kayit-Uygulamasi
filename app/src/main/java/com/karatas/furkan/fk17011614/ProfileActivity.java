@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +46,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         byte[] byteArray = getIntent().getByteArrayExtra("IMAGE");
         profilePicture.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length));
+
+        findViewById(R.id.btn_list_enrollment).setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EnrollmentInfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private int calculateAge(String dateOfBirth) {
@@ -67,5 +78,14 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         return age;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return false;
     }
 }

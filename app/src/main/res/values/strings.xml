@@ -21,4 +21,6 @@
     <string name="example_phone">05495480405</string>
     <string name="example_email">example@example.com</string>
     <string name="btn_list_enrollment">List Student Enrollment Info</string>
+    <string name="label_enrollment">Student Enrollment Info</string>
+    <string name="label_course_info">Course Info</string>
 </resources>

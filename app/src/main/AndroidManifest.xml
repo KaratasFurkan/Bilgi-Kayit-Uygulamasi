@@ -16,21 +16,29 @@
         <activity
             android:name=".LoginActivity"
             android:noHistory="true">
-            <!--android:screenOrientation="portrait"-->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".FormActivity">
-            <!--android:screenOrientation="portrait"-->
+        <activity android:name=".FormActivity"
+            android:screenOrientation="portrait">
+
         </activity>
         <activity
             android:name=".ProfileActivity"
             android:label="@string/label_profile"
-            android:parentActivityName=".FormActivity" />
-        <!--android:screenOrientation="portrait"-->
+            android:parentActivityName=".FormActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EnrollmentInfoActivity"
+            android:label="@string/label_enrollment"
+            android:parentActivityName=".ProfileActivity"/>
+        <activity
+            android:name=".CourseInfoActivity"
+            android:label="@string/label_course_info"
+            android:parentActivityName=".EnrollmentInfoActivity"/>
     </application>
 
 </manifest>
