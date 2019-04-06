@@ -3,14 +3,11 @@ package com.karatas.furkan.fk17011614;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordET.getText().toString().equals("password"))) {
                     //ünlem işareti kaldırılacak, development sürecinde username&pw girmemek icin
                     // kaldırıldı
-                    Intent intent = new Intent(getApplicationContext(), UserInputsActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), FormActivity.class);
                     startActivity(intent);
 
                 } else {

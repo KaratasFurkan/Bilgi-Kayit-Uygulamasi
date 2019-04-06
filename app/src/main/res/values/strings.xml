@@ -16,4 +16,9 @@
     <string name="btn_save">Save</string>
     <string name="btn_clear">Clear</string>
     <string name="alert_blank">You must fill in the all blanks.</string>
+    <string name="label_profile">Student Profile</string>
+    <string name="lorem_ipsum">lorem ipsum</string>
+    <string name="example_phone">05495480405</string>
+    <string name="example_email">example@example.com</string>
+    <string name="btn_list_enrollment">List Student Enrollment Info</string>
 </resources>

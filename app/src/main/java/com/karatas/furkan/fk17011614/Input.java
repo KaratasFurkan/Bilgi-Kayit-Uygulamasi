@@ -20,12 +20,12 @@ public class Input implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+        if (charSequence.toString().equals("")) clearWarnings();
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        clearWarnings();
+
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Input implements TextWatcher {
         if (invisibleText != null) invisibleText.setVisibility(View.VISIBLE);
     }
 
-    public void warnForBlanks() {
+    public boolean warnForBlanks() {
         int i, indexOfFirstEmptyInput = -1;
         for (i = 0; i < editTexts.length; i++) {
             if (editTexts[i].getText().toString().equals("")) {
@@ -94,9 +94,8 @@ public class Input implements TextWatcher {
         if (indexOfFirstEmptyInput != -1) {
             editTexts[indexOfFirstEmptyInput].requestFocus();
             if (invisibleText != null) invisibleText.setVisibility(View.VISIBLE);
-        } else {
-            editTexts[0].requestFocus();
-        }
+            return true;
+        } else return false;
     }
 
     public void clearWarnings() {
