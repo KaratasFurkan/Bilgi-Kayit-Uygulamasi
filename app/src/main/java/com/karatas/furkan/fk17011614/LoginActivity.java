@@ -11,87 +11,43 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText usernameET, passwordET;
-    private TextView alertTV;
+    private EditText usernameET;
+    private EditText passwordET;
+    private Input inputs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         usernameET = findViewById(R.id.et_username);
         passwordET = findViewById(R.id.et_password);
-        alertTV = findViewById(R.id.tv_login_alert);
-        Button loginBtn = findViewById(R.id.btn_login);
 
-        loginBtn.setOnClickListener(new Button.OnClickListener() {
+        inputs = new Input(this, new EditText[]{usernameET, passwordET});
+        inputs.setInvisibleText((TextView) findViewById(R.id.tv_login_alert));
+
+        findViewById(R.id.btn_login).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (usernameET.getText().toString().equals("admin") &&
-                        passwordET.getText().toString().equals("password")) {
-
+                if (!(usernameET.getText().toString().trim().equals("admin") &&
+                        passwordET.getText().toString().equals("password"))) {
+                    //ünlem işareti kaldırılacak, development sürecinde username&pw girmemek icin
+                    // kaldırıldı
                     Intent intent = new Intent(getApplicationContext(), UserInputsActivity.class);
                     startActivity(intent);
 
                 } else {
-                    emptyInputs(new EditText[]{usernameET, passwordET});
-                    warnForInputs(new EditText[]{usernameET, passwordET});
-                    alertTV.setVisibility(View.VISIBLE);
+                    inputs.empty();
+                    inputs.warnForWrongs();
                 }
             }
         });
-
-        usernameET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence charSequence,
-                                      int i, int i1, int i2) {
-                clearWarningsForInputs(new EditText[]{usernameET, passwordET});
-                alertTV.setVisibility(View.INVISIBLE);
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {}
-            @Override
-            public void beforeTextChanged(CharSequence charSequence,
-                                          int i, int i1, int i2) {}
-        });
-
-        passwordET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence charSequence,
-                                      int i, int i1, int i2) {
-                clearWarningsForInputs(new EditText[]{usernameET, passwordET});
-                alertTV.setVisibility(View.INVISIBLE);
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {}
-            @Override
-            public void beforeTextChanged(CharSequence charSequence,
-                                          int i, int i1, int i2) {}
-        });
-    }
-
-    public void warnForInputs(EditText[] editTexts){
-        for (EditText editText : editTexts){
-            editText.setBackground(getResources().getDrawable
-                    (R.drawable.et_rounded_light_red_background)
-            );
-        }
-    }
-
-    public void clearWarningsForInputs(EditText[] editTexts){
-        for (EditText editText : editTexts){
-            editText.setBackground(getResources().getDrawable
-                    (R.drawable.et_rounded_background)
-            );
-        }
-    }
-
-    public void emptyInputs(EditText[] editTexts){
-        for (EditText editText : editTexts){
-            editText.setText("");
-        }
+        usernameET.addTextChangedListener(inputs);
+        passwordET.addTextChangedListener(inputs);
     }
 }
