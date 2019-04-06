@@ -109,8 +109,7 @@ public class FormActivity extends AppCompatActivity {
         findViewById(R.id.btn_save).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (inputs.warnForBlanks()) { //başına ünlem koyulacak. development sırasında her
-                    // seferinde uğraşmamak için şimdilik böyle
+                if (!inputs.warnForBlanks()) {
                     Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     sendInformation(intent);
                     startActivity(intent);

@@ -31,10 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btn_login).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!(usernameET.getText().toString().trim().equals("admin") &&
-                        passwordET.getText().toString().equals("password"))) {
-                    //ünlem işareti kaldırılacak, development sürecinde username&pw girmemek icin
-                    // kaldırıldı
+                if (usernameET.getText().toString().trim().equals("admin") &&
+                        passwordET.getText().toString().equals("password")) {
                     Intent intent = new Intent(getApplicationContext(), FormActivity.class);
                     startActivity(intent);
 
