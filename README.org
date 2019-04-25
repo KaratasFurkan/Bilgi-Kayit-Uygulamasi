@@ -1,1 +1,16 @@
-* Bilgi Kayıt Uygulaması
+* Öğrenci Bilgi Kayıt Uygulaması
+
+Mobil programlamaya giriş dersi ödevi olarak basit bir öğrenci bilgi kayıt
+uygulaması.
+
+Kısaca uygulama kullanıcı adı ve şifre ile girilen admin panelinden sisteme
+bilgileri verilen yeni öğrenciyi ekliyor ve öğrencinin bilgilerini gösteriyor.
+
+Demo:
+
+#+BEGIN_EXPORT html
+<div style="text-align:center"><iframe width="500" height="500" src="https://www.youtube.com/embed/d0U9Epa2Bvc"
+frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+picture-in-picture" allowfullscreen></iframe></div>
+#+END_EXPORT
+
