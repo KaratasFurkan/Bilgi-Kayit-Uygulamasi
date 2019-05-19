@@ -8,7 +8,5 @@ bilgileri verilen yeni öğrenciyi ekliyor ve öğrencinin bilgilerini gösteriy
 
 Demo[0:58]: 
 <p align="center">
-  <a href="https://youtu.be/d0U9Epa2Bvc">
     <img src="demo.gif" alt="demo.gif" width="300"/>
-  </a>
 </p>
